@@ -1,11 +1,8 @@
 import React from 'react';
 import styles from './users.module.css';
-//import userPhoto from "../../assets/image/users.png"
-
-let userPhoto = 'https://imhung.com/wp-content/uploads/2019/11/users-vector-icon-png_260862.jpg';
+import userPhoto from '../../assets/image/users.png'
 
 let Users = (props) => {
-
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
