@@ -1,3 +1,9 @@
 .descriptionBlock {
     padding: 10px;
 }
+.textBlock{
+    font-size: 16px;
+    font-weight: 700;
+    padding: 30px 0 0 30px;
+
+}
