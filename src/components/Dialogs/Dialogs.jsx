@@ -3,7 +3,7 @@ import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {Redirect} from "react-router-dom";
-import AddMassageFormRedux from "./DialogsForm";
+import AddMassageFormRedux from "./AddMessageForm/AddMessageForm";
 
 
 const Dialogs = (props) => {
