@@ -38,7 +38,7 @@ class UsersContainer extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
+/*let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
@@ -47,14 +47,26 @@ let mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
     }
-}
+}*/
+
+/*let mapStateToProps = (state) => {
+    return {
+        users: state.usersPage.users,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress,
+    }
+}*/
+
+
 
 export default compose(
     connect( mapStateToProps, {
         follow, unfollow, setCurrentPage,
         toggleFollowingProgress,getUsers,
     }),
-    withAuthRedirect
 ) (UsersContainer);
 
 
