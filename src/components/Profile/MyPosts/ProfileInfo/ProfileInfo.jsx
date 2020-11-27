@@ -2,6 +2,7 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from "../../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHook from "./ProfileStatusWithHook";
 
 const ProfileInfo = (props) => {
 
@@ -20,12 +21,12 @@ const ProfileInfo = (props) => {
                     <div>{props.profile.fullName}</div>
                 </div>
                 <div className={s.textBlock}>
-                    <div>{props.profile.lookingForAJob? "Ищу работу":"Уже работаю"}</div>
+                    {/*<div>{props.profile.lookingForAJob? "Ищу работу":"Уже работаю"}</div>*/}
                     <div>{props.profile.lookingForAJobDescription}</div>
                     <div>{props.profile.contacts.twitter}</div>
                     <div>{props.profile.contacts.facebook}</div>
                     <div>{props.profile.contacts.instagram}</div>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>
         </div>
