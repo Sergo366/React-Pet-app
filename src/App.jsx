@@ -14,6 +14,7 @@ import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
 
 
+
 class App extends React.Component {
 
     componentDidMount() {
@@ -24,28 +25,23 @@ class App extends React.Component {
         if (!this.props.initialized) {
             return <Preloader/>
         }
-
         return (
-            <BrowserRouter>
-                <Provider store={store}>
-                    <div className='app-wrapper'>
-                        <HeaderContainer/>
-                        <Navbar/>
-                        <div className='app-wrapper-content'>
-                            <Route path='/dialogs'
-                                   render={() => <DialogsContainer/>}/>
+            <div className='app-wrapper'>
+                <HeaderContainer/>
+                <Navbar/>
+                <div className='app-wrapper-content'>
+                    <Route path='/dialogs'
+                           render={() => <DialogsContainer/>}/>
 
-                            <Route path='/profile/:userId?'
-                                   render={() => <ProfileContainer/>}/>
+                    <Route path='/profile/:userId?'
+                           render={() => <ProfileContainer/>}/>
 
-                            <Route path='/users'
-                                   render={() => <UsersContainer/>}/>
-                            <Route path='/login'
-                                   render={() => <Login/>}/>
-                        </div>
-                    </div>
-                </Provider>
-            </BrowserRouter>
+                    <Route path='/users'
+                           render={() => <UsersContainer/>}/>
+                    <Route path='/login'
+                           render={() => <Login/>}/>
+                </div>
+            </div>
         )
     }
 }
@@ -55,6 +51,15 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 })
 
-export default compose(
+let AppContainer =  compose(
     withRouter,
     connect(mapStateToProps, {initializeAPP}))(App)
+
+const SamuraiJSApp = () =>{
+    return <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+}
+export default SamuraiJSApp;
