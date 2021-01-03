@@ -1,4 +1,5 @@
 import {profileAPI, usersAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -20,7 +21,7 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 id: 5,
                 message: action.newPostText,
@@ -28,12 +29,16 @@ const profileReducer = (state = initialState, action) => {
             };
             return {
                 ...state,
-                posts: [...state.posts, newPost]
+                posts: [...state.posts, newPost],
+                newPostText: ''
             };
-        case SET_STATUS: {
-            return {...state, status: action.status}
         }
-            ;
+
+        case SET_STATUS: {
+            return {...state,
+                status: action.status}
+        }
+
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
@@ -80,6 +85,20 @@ export const savePhoto = (file) => async (dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+}
+
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const  userId = getState().auth.userId;
+    const response = await profileAPI.saveProfile(profile)
+
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userId));
+    } else {
+        dispatch(stopSubmit("edit-profile ", {_error: response.data.messages[0] }))
+        //Нужно распарсить строку, чтобы при ошибках в разных полях подсвечивались и писало в каком поле ошибка
+        return Promise.reject(response.data.messages[0])
     }
 }
 
