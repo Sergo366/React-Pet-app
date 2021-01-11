@@ -1,0 +1,13 @@
+.footer{
+    font-size: 20px;
+    background-color: #1a1a1a;
+    color: white;
+    grid-area: f;
+    text-align: center;
+
+}
+.content img{
+    margin: 15px 0 0 0;
+    width: 140px;
+    border-radius: 10px;
+}

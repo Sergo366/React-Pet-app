@@ -10,6 +10,7 @@ import {initializeAPP} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
+import Footer from "./components/Footer/Footer";
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"))
 const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer"))
@@ -30,7 +31,9 @@ class App extends React.Component {
         return (
             <div className='app-wrapper'>
                 <HeaderContainer/>
+
                 <Navbar/>
+
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
                            render={withSuspense(DialogsContainer)}/>
@@ -41,6 +44,7 @@ class App extends React.Component {
                     <Route path='/login'
                            render={() => <Login/>}/>
                 </div>
+                <Footer/>
             </div>
         )
     }
