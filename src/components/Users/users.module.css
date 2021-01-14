@@ -2,6 +2,11 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
+    padding: 25px 0 0 0;
+}
+.UserData div:first-child{
+    padding:  10px 0 0 0;
+
 }
 
 

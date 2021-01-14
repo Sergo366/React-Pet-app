@@ -8,7 +8,7 @@ import {TextArea} from "../../common/FormsControls/FormsControl";
 const MyPosts = React.memo(props => {
 
     let postsElements =
-        props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
+        props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />);
 
     const onAddPosts = (values) => {
         props.addPost(values.newPostText)
@@ -19,7 +19,7 @@ const MyPosts = React.memo(props => {
             <h3>My posts</h3>
             <AddNewPostRedux onSubmit={onAddPosts}/>
             <div className={s.posts}>
-                {postsElements}
+                {postsElements }
             </div>
         </div>
     )
